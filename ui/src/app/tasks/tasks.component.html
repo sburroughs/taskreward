@@ -1,0 +1,28 @@
+<p>Completed Points: {{completedPoints}}</p>
+
+<h2>Add Task</h2>
+<form #f="ngForm" (ngSubmit)='create(f)' novalidate>
+
+  <label>name:
+    <input required
+           minlength="1"
+           name="name"
+           ngModel/>
+  </label>
+  <label>reward:
+    <input required
+           minlength="1"
+           pattern="[0-9]*"
+           name="reward"
+           ngModel/>
+  </label>
+  <button type="submit" [disabled]="!f.valid">Add</button>
+
+</form>
+
+
+
+<h2>Current Tasks</h2>
+<div *ngFor="let t of tasks">
+  {{t.name}} {{t.reward}} <button (click)="completeTask(t.id)">X</button>
+</div>
